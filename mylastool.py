@@ -32,12 +32,18 @@ def find_section_index(lines, prefix):
         idx += 1
     return idx
 
+def get_header_section(lines):
+    return lines[:find_section_index(lines, '~A')]
+
 def print_header_section(lines):
-    for line in lines[:find_section_index(lines, '~A')]:
+    for line in get_header_section(lines):
         print(line)
 
+def get_data_section(lines):
+    return lines[find_section_index(lines, '~A')+1:]
+
 def print_data_section(lines):
-    for line in lines[find_section_index(lines, '~A')+1:]:
+    for line in get_data_section(lines):
         print(line)
 
 def main():
